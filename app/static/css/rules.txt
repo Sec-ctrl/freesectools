@@ -1,0 +1,152 @@
+
+FreeSecTools Design & Branding Guidelines
+1. Color Palette
+Primary Colors:
+
+    Background: #1e001e (Dark Purple)
+    Text (Primary): #d3d3d3 (Light Gray)
+    Headings: #f5f5f5 (Slightly Lighter Gray)
+    Primary Accent: #8a2be2 (Vibrant Purple)
+    Secondary Accent: #3b4a54 (Steel Blue)
+
+Usage:
+
+    Background: Always use #1e001e for the main background to maintain the dark, hacker-theme aesthetic.
+    Headings: Use #f5f5f5 for headings to ensure clear contrast with the background.
+    Text: Use #d3d3d3 for body text, #e6e6e6 for sidebar and smaller text elements.
+    Primary Accent: Use #8a2be2 for interactive elements such as buttons, active navbar links, and borders.
+    Secondary Accent: Use #3b4a54 for icons, secondary buttons, and subtle background accents.
+
+2. Typography
+Font:
+
+    Use clean, modern fonts that are easy to read across all devices.
+    Primary Font: A sans-serif font like Roboto or Montserrat works best.
+    Weight: Use font-weight: 800 for headings and font-weight: 400-700 for body text.
+
+Text Styling:
+
+    Headings (h1-h6): Always use #f5f5f5 for headings. Size and weight should emphasize hierarchy:
+        H1: 4rem, 800 weight
+        H2-H6: Gradually smaller with lighter weights.
+    Body Text: Use #d3d3d3 for paragraphs, lists, and general content.
+
+Letter-spacing and Text-transform:
+
+    Heading Classes: Apply text-transform: uppercase and letter-spacing: 0.1rem for a clean and authoritative look.
+    Text Shadow: Add text-shadow: 0 0 8px rgba(138, 43, 226, 0.8) for a slight glow effect on key titles.
+
+3. Buttons
+Primary Button (btn-primary):
+
+    Background Color: #8a2be2
+    Hover/Active State: #7a23d1 for hover or focus states.
+    Text Color: Always #ffffff for clear contrast.
+    Border: Match the background color for consistency.
+
+Outline Button (btn-outline-success):
+
+    Border Color: #8a2be2
+    Text Color: #8a2be2
+    Hover: Switch the background and text color to:
+        Background: #7a23d1
+        Text: #ffffff
+
+Button Transitions:
+
+    All buttons should have a smooth transition effect: transition: background-color 0.3s ease, border-color 0.3s ease.
+
+4. Navbar
+Background:
+
+    Use a dark gradient (linear-gradient(135deg, #1e1e1e, #2c2c2c)) for a sleek look with depth.
+
+Link Colors:
+
+    Inactive Links: #e0e0e0
+    Hover State: #472d63 with a background color change for interactivity.
+    Active Links: #582a72 for the active page with a slight shadow highlight (box-shadow: inset 0 -4px 0 rgba(138, 43, 226, 0.8)).
+
+Brand Logo:
+
+    Always use #8a2be2 for the brand logo. On hover, the brand color can shift to #472d63.
+
+5. Cards & Sections
+Card Backgrounds:
+
+    Use #2c2c2c as the background color for all cards.
+    Text Color: #ffffff for titles and #e0e0e0 for body text.
+    Shadows: Apply box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3) for depth.
+
+Content Sections:
+
+    Use #2a2a2a as the background for content sections with a slightly lighter border (border: 1px solid #444444).
+
+Borders:
+
+    Use vibrant purple (#8a2be2) sparingly for top/bottom borders, especially in special sections (e.g., .why-freesectools-section).
+
+6. Icons & Visual Elements
+Icon Size:
+
+    Maintain a consistent size of 60px for custom icons.
+
+Hover States:
+
+    Apply a subtle zoom effect (transform: scale(1.05)) and brightness increase (filter: brightness(1.2)) for icons on hover.
+
+Text Shadows:
+
+    For major titles and important visual elements, apply a glow effect using text shadows like:
+        text-shadow: 0 0 8px rgba(138, 43, 226, 0.8).
+
+7. Interactive Elements
+Links:
+
+    Default Color: #d67fe7
+    Hover Color: #8a2be2
+    Underline: Use text-decoration: none to remove default underlines.
+
+Form Controls:
+
+    Input Background: #2c2c2c for dark backgrounds.
+    Placeholder Text: Use white with opacity for subtle placeholders.
+
+8. Spacing & Layout
+Padding:
+
+    Apply consistent padding for all sections:
+        Cards: padding: 20px
+        Content Sections: padding: 20px 30px
+        Buttons: Ensure padding matches typography, i.e., padding: 10px 20px for a button.
+
+Margins:
+
+    Add a margin between sections and elements for visual clarity:
+        Sections: margin-bottom: 20px
+        Titles: margin-bottom: 1.5rem
+
+Border Radius:
+
+    Cards & Sections: Apply border-radius: 10px for a rounded and modern look.
+
+9. Animation & Interactivity
+Background Animation:
+
+    Apply a subtle movement animation to background elements, e.g., the SVG pattern:
+
+    css
+
+    animation: backgroundAnimation 60s linear infinite;
+
+Hover Effects:
+
+    Buttons, Icons, and Links: Add hover effects that involve:
+        Color change
+        Slight zoom (transform: scale(1.05))
+        Box shadows (box-shadow: 0 6px 12px).
+
+10. Accessibility
+
+    Text Contrast: Ensure text color has sufficient contrast against backgrounds. For dark backgrounds, use light text (#d3d3d3 or lighter) to ensure readability.
+    Focus States: Ensure all interactive elements (links, buttons, etc.) have clear focus states for keyboard users.

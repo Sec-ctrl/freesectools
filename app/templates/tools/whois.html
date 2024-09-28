@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Free online Whois lookup tool. Check domain registration details, domain owner information, and more.">
+    <meta name="keywords" content="Whois lookup, domain lookup, domain registration, domain owner, free whois">
+    <title>Free Online Whois Lookup Tool - Check Domain Registration Details</title>
+    <script type="application/ld+json" nonce="{{ g.csp_nonce }}">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Free Online Whois Lookup Tool",
+      "description": "Perform a free Whois lookup to find domain registration details.",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://freesectools.com"
+        },{
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Whois Lookup",
+          "item": "https://freesectools.com/whois"
+        }]
+      }
+    }
+    </script>
+</head>
+
+<!-- Page Image -->
+<div class="text-center mb-4">
+    <img src="{{ url_for('static', filename='images/whois.png') }}" alt="Whois Lookup Tool Interface" class="img-fluid whois-img">
+</div>
+
+<!-- Page Title and Description -->
+<h1>Online Whois Lookup Tool</h1>
+<p>Use our free online Whois lookup tool to find essential information about domain registration, including the domain owner, registration date, expiration date, and more. This tool is crucial for cybersecurity professionals, pen-testers, and anyone interested in uncovering details about a website's digital footprint.</p>
+
+<!-- Whois Lookup Form -->
+<form id="whoisLookup">
+    <!-- Get domain to lookup -->
+    <div class="mb-3">
+        <label for="domain" class="form-label">Input Domain</label>
+        <input type="text" class="form-control" id="domain" name="domain" placeholder="Enter domain" maxlength="50">
+    </div>
+
+    <!-- Lookup Button -->
+    <button type="button" class="btn btn-primary" id="whois-lookup-btn">Whois Lookup</button>
+</form>
+
+<!-- Display the Whois Info -->
+<div id="whois-container" class="mt-4 alert alert-success hidden">
+    <h4>Whois Info:</h4>
+    <pre id="whois-info"></pre>
+</div>
+
+
+
+<!-- Blog Post Section -->
+<div class="mt-5">
+    <hr>
+    <h2 class="mb-4">{{ blog_post.title }}</h2>
+    <div class="card mb-4 shadow-sm border-0 rounded-4">
+        <img src="{{ url_for('static', filename='images/' + blog_post.image) }}" class="card-img-top" alt="{{ blog_post.title }}">
+
+        <div class="card-body">
+            <h5 class="card-title">{{ blog_post.title }}</h5>
+            <p class="card-text">
+                {{ blog_post.content | safe }}
+            </p>
+            <p class="text-secondary">By {{ blog_post.author }} | {{ blog_post.date }} | Category: {{ blog_post.category }}</p>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/whois.css') }}">
+<script src="{{ url_for('static', filename='/whois.js') }}" nonce="{{ g.csp_nonce }}"></script>
+
+
+{% endblock content %}

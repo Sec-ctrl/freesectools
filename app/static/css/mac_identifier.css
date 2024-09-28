@@ -1,0 +1,104 @@
+.custom-input {
+    border: 2px solid #8a2be2; /* Use vibrant purple for input field borders */
+    background-color: #2a2a2a; /* Dark background for input fields */
+    color: #ffffff; /* White text for better readability */
+    border-radius: 5px; /* Consistent border radius */
+    padding: 10px; /* Padding for input fields */
+}
+
+.custom-btn {
+    background-color: #8a2be2; /* Vibrant purple for button background */
+    color: #ffffff; /* White text for contrast */
+    border-radius: 5px; /* Consistent border radius */
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+}
+
+.custom-btn:hover {
+    background-color: #7a23d1; /* Slightly darker purple on hover */
+}
+
+.custom-card {
+    background-color: #2e2e2e; /* Dark background for card consistency */
+    border-left: 5px solid #8a2be2; /* Accent border in vibrant purple */
+    color: #e6e6e6; /* Light text color for readability */
+    padding: 20px;
+    border-radius: 15px; /* Consistent border radius for card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+.custom-title {
+    color: #8a2be2; /* Vibrant purple for titles */
+    font-weight: bold;
+    font-size: 1.5rem; /* Increased font size for titles */
+}
+
+.custom-info {
+    font-size: 1.2rem;
+    color: #d3d3d3; /* Light grey for information text */
+}
+
+.custom-info-section {
+    background-color: #3a3a3a; /* Dark grey background */
+    padding: 20px;
+    border-radius: 10px; /* Rounded corners for section */
+    color: #e6e6e6; /* Light grey for text */
+}
+
+.custom-info-section h2 {
+    color: #ffffff; /* White for headings */
+    font-weight: bold; /* Bold headings for clarity */
+}
+
+.custom-info-section ul {
+    list-style-type: disc;
+    padding-left: 40px;
+    color: #d3d3d3; /* Light grey for list items */
+}
+
+.italic-text {
+    font-style: italic;
+    color: #b0bec5; /* Light grey for italic text */
+}
+
+.result-title {
+    font-weight: bold;
+    color: #8a2be2; /* Use vibrant purple for result titles */
+    font-size: 1.5rem; /* Increased font size for titles */
+}
+
+.result-content {
+    font-size: 1.3rem; /* Larger font size for better readability */
+    color: #e6e6e6; /* Light grey for result content */
+    margin-left: 10px;
+}
+
+.result-icon {
+    font-size: 2rem; /* Larger icon size for better visibility */
+    color: #8a2be2; /* Icon color matching the theme */
+    margin-right: 10px;
+}
+
+/* For the main image */
+.mac-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 20px; /* Consistent rounded corners for images */
+}
+
+/* For the tool feature image */
+.mac-tool-features {
+    max-width: 80%;
+    height: auto;
+    border-radius: 10px; /* Slightly smaller rounded corners for tool feature images */
+}
+
+#mac-lookup-result {
+    display: none;
+    margin-top: 1rem;
+    background-color: #2a2a2a; /* Dark background for the lookup result */
+    padding: 15px;
+    border-radius: 15px; /* Consistent border radius */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    color: #e6e6e6; /* Light text for readability */
+}

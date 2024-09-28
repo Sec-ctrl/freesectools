@@ -1,0 +1,588 @@
+body {
+  background-color: #1e001e; /* Dark purple background */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 800 800'%3E%3Cg fill='none' stroke='%23404' stroke-width='1'%3E%3Cpath d='M769 229L1037 260.9M927 880L731 737 520 660 309 538 40 599 295 764 126.5 879.5 40 599-197 493 102 382-31 229 126.5 79.5-69-63'/%3E%3Cpath d='M-31 229L237 261 390 382 603 493 308.5 537.5 101.5 381.5M370 905L295 764'/%3E%3Cpath d='M520 660L578 842 731 737 840 599 603 493 520 660 295 764 309 538 390 382 539 269 769 229 577.5 41.5 370 105 295 -36 126.5 79.5 237 261 102 382 40 599 -69 737 127 880'/%3E%3Cpath d='M520-140L578.5 42.5 731-63M603 493L539 269 237 261 370 105M902 382L539 269M390 382L102 382'/%3E%3Cpath d='M-222 42L126.5 79.5 370 105 539 269 577.5 41.5 927 80 769 229 902 382 603 493 731 737M295-36L577.5 41.5M578 842L295 764M40-201L127 80M102 382L-261 269'/%3E%3C/g%3E%3Cg fill='%23505'%3E%3Ccircle cx='769' cy='229' r='5'/%3E%3Ccircle cx='539' cy='269' r='5'/%3E%3Ccircle cx='603' cy='493' r='5'/%3E%3Ccircle cx='731' cy='737' r='5'/%3E%3Ccircle cx='520' cy='660' r='5'/%3E%3Ccircle cx='309' cy='538' r='5'/%3E%3Ccircle cx='295' cy='764' r='5'/%3E%3Ccircle cx='40' cy='599' r='5'/%3E%3Ccircle cx='102' cy='382' r='5'/%3E%3Ccircle cx='127' cy='80' r='5'/%3E%3Ccircle cx='370' cy='105' r='5'/%3E%3Ccircle cx='578' cy='42' r='5'/%3E%3Ccircle cx='237' cy='261' r='5'/%3E%3Ccircle cx='390' cy='382' r='5'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 1000px 1000px; /* Set the size of each pattern tile */
+  background-repeat: repeat; /* Repeat the pattern */
+  color: #d3d3d3; /* Light text color */
+  margin-top: 5rem;
+  
+  /* Apply the animation */
+  animation: backgroundAnimation 60s linear infinite;
+}
+
+/* Subtle animation to add depth */
+@keyframes backgroundAnimation {
+  0% {
+    background-position: 0% 0%; /* Initial positions */
+  }
+  50% {
+    background-position: 50% 50%; /* Middle positions */
+  }
+  100% {
+    background-position: 100% 100%; /* End positions */
+  }
+}
+h1, h2, h3, h4, h5, h6 {
+  color: #f5f5f5; /* Slightly lighter heading color */
+}
+
+/* h0 class for bold, hacker-themed purple titles */
+.h0 {
+  font-size: 4rem; /* Large and bold for impact */
+  font-weight: 800;  /* Strong font weight for emphasis */
+  color: #8a2be2;  /* Hacker purple color */
+  text-align: center; /* Centered for balance */
+  text-transform: uppercase; /* All caps for a clean, authoritative feel */
+  letter-spacing: 0.1rem; /* Spacing between letters to enhance readability */
+  text-shadow: 0 0 8px rgba(138, 43, 226, 0.8), 0 0 12px rgba(138, 43, 226, 0.6);
+  border-bottom: 4px solid rgba(138, 43, 226, 0.8); /* Thick purple border to make it pop */
+  padding-bottom: 1rem; /* Adds space between text and border */
+  margin-bottom: 2.5rem; /* Space below the title */
+  transition: text-shadow 0.4s ease-in-out, border-color 0.4s ease-in-out; /* Smooth transitions for hover effects */
+}
+
+/* Interactive hover effect */
+.h0:hover {
+  text-shadow: 0 0 20px rgba(138, 43, 226, 1), 0 0 40px rgba(138, 43, 226, 0.8); /* Increase the glow effect */
+  border-color: rgb(138, 43, 226); /* Shift border color to blue for contrast */
+}
+
+
+
+
+.bg-steel {
+  background-color: #3b4a54; /* Darker steel color */
+}
+
+.site-header .navbar-nav .nav-link {
+  color: #e0e0e0; /* Light text for navbar links */
+}
+
+.site-header .navbar-nav .nav-link:hover {
+  color: #ffffff;
+}
+
+.site-header .navbar-nav .nav-link.active {
+  font-weight: 500;
+}
+
+.content-section {
+  background: #2a2a2a; /* Darker background for content sections */
+  padding: 20px 30px; /* More padding for a spacious look */
+  border: 1px solid #444444; /* Darker border */
+  border-radius: 25px;
+  margin-bottom: 20px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Adds more depth */
+}
+
+.article-title {
+  color: #ffffff; /* White color for article titles */
+}
+
+a.article-title:hover {
+  color: #a582c6; 
+}
+
+.article-content {
+  white-space: pre-line;
+}
+
+.article-img {
+  height: 65px;
+  width: 65px;
+  margin-right: 16px;
+}
+
+.article-metadata {
+  padding-bottom: 1px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid #555555; /* Darker border */
+}
+
+.article-metadata a:hover {
+  color: #ffffff; /* White on hover */
+}
+
+.article-svg {
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+}
+
+.account-img {
+  height: 125px;
+  width: 125px;
+  margin-right: 20px;
+  margin-bottom: 16px;
+}
+
+.account-heading {
+  font-size: 2.5rem;
+}
+
+/* Styles for the password strength container */
+.password-strength-container {
+  margin-top: 10px;
+}
+
+/* Styles for the strength bar container */
+.password-strength {
+  width: 100%;
+  background-color: #333333; /* Darker background */
+  border-radius: 5px;
+  height: 10px;
+}
+
+/* Additional styling for the "Why FreeSecTools" section */
+.why-freesectools-section {
+  background-color: #2a2a2a; /* Dark background for the section */
+  border-top: 5px solid #8a2be2; /* Top border to highlight the section */
+  border-bottom: 5px solid #8a2be2; /* Bottom border for balance */
+}
+
+.icon-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #3b4a54; /* Dark background for icons */
+}
+
+.card {
+  background: linear-gradient(135deg, #2c2c2c, #1e1e1e); /* Subtle gradient */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Adds more depth */
+}
+.card-title {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #8a2be2; /* Light color for card titles */
+}
+
+.card-text {
+  font-size: 1rem;
+  color: #ffffff; /* Lighter text for card content */
+}
+
+.card-body {
+  padding: 2rem; /* Increase padding for more spacious layout */
+  background-color: #2a2a2a;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Adds more depth */
+}
+
+/* Custom styling for icons */
+.custom-icon {
+  width: 60px; /* Set a fixed width */
+  height: auto; /* Maintain aspect ratio */
+  color: #8a2be2;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-icon:hover {
+  filter: brightness(1.2); /* Make icons pop on hover */
+  transform: scale(1.05); /* Slight zoom effect */
+  transition: all 0.3s ease;
+}
+
+/* Text clamping for blog summaries */
+.card-text-clamp {
+  display: -webkit-box; /* Fallback for WebKit-based browsers */
+  display: -moz-box; /* Fallback for Firefox */
+  display: -ms-flexbox; /* Fallback for older Microsoft browsers */
+  display: box; /* Fallback for older browsers */
+  -webkit-box-orient: vertical; /* Required for text clamping */
+  -moz-box-orient: vertical;
+  -ms-flexbox-orient: vertical;
+  box-orient: vertical;
+  -webkit-line-clamp: 3; /* Number of lines to show */
+  line-clamp: 3; /* Future-proofing for the standard property */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Adds ellipsis at the end if text overflows */
+}
+
+
+
+/* Scrollable content styling for dark mode */
+.scrollable-content {
+  max-height: 100px;
+  overflow-y: auto;
+  background-color: #333; /* Darker background */
+  padding: 5px;
+  border: 1px solid #444; /* Darker border */
+  border-radius: 5px;
+  color: #e0e0e0; /* Light text color */
+}
+
+
+/* Custom Button Styles */
+.btn-primary {
+  background-color: #8a2be2; /* Vibrant purple */
+  border-color: #8a2be2; /* Matching border color */
+  color: #ffffff; /* White text color for contrast */
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+  background-color: #7a23d1; /* Slightly darker shade for hover/active state */
+  border-color: #7a23d1; /* Border color for hover/active state */
+}
+
+/* Optional: Add transition for smooth hover effect */
+.btn-primary {
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Sidebar Area Styles */
+.sidebar-area {
+  background: #2e2e2e; /* Dark background specific to sidebar */
+  color: #d3d3d3; /* Light text for sidebar */
+  padding: 15px;
+  border: 1px solid #444444; /* Dark border */
+  border-radius: 15px;
+}
+
+/* Sidebar Text */
+.sidebar-text {
+  color: #e6e6e6; /* Ensure sidebar text is light */
+}
+
+/* List Group in Sidebar */
+.sidebar-list-group .sidebar-list-item {
+  background-color: #2e2e2e; /* Dark background matching the sidebar */
+  color: #e0e0e0; /* Light text */
+  border: 1px solid #444444; /* Dark border */
+  margin-bottom: 5px; /* Add spacing between items */
+  border-radius: 8px; /* Rounded corners for list items */
+}
+
+.sidebar-list-group .sidebar-list-item:hover {
+  background-color: #333333; /* Slightly darker on hover */
+}
+
+/* Card in Sidebar */
+.sidebar-card {
+  background-color: #2e2e2e; /* Dark background for cards */
+  border: 1px solid #444444; /* Dark border */
+}
+
+.sidebar-card-body {
+  background-color: #2e2e2e; /* Match the card body to the card */
+  color: #e0e0e0; /* Ensure text is light */
+}
+
+.sidebar-card-title {
+  color: #f5f5f5; /* Light color for card titles */
+}
+
+.sidebar-news-link {
+  color: #8a2be2; /* Light gray-blue text color */
+}
+
+.sidebar-news-link:hover {
+  color: #7a23d1; /* Darker */
+}
+
+/* Sidebar Links */
+.sidebar-link {
+  color: #d3d3d3; /* Light gray-blue text color */
+  text-decoration: none;
+  border-color: #8a2be2; /* Remove underline */
+}
+
+.sidebar-link:hover {
+  color: #7a23d1; /* White on hover */
+}
+
+/* Sidebar Carousel Controls */
+.sidebar-area .carousel-control-prev-icon,
+.sidebar-area .carousel-control-next-icon {
+  filter: invert(1); /* Make icons white */
+}
+
+/* Text muted within the sidebar */
+.sidebar-area .text-muted {
+  color: #b0bec5 !important; /* Slightly lighter for visibility */
+}
+
+/* Sidebar Card Text */
+.sidebar-card-text {
+  color: #dcdcdc; /* Lighter text for card content */
+}
+
+/* Rounded corners for the Home section */
+.rounded-section {
+  border-radius: 20px; /* Adjust the value to make corners more or less rounded */
+  overflow: hidden; /* Ensure content does not overflow rounded corners */
+  padding: 20px; /* Optional: Add padding to the section */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Optional: Add a shadow for depth */
+}
+
+
+.custom-input {
+  color: #ffffff; /* White text color */
+  background-color: #2c2c2c; /* Dark background */
+  border: 1px solid #444; /* Optional: Border color */
+}
+
+input::placeholder {
+  font-weight: bold;
+  opacity: 0.5;
+  color: #ffffff;
+  }
+
+.blog-p1 {
+  line-height: 1.5;
+  color: #ffffff;
+}
+
+/* Styles for all text elements */
+h1, h2, ul, ol, li, nav, p {
+  color: #d3d3d3;
+}
+
+/* Make text white for specific classes and elements */
+.card-title,
+div {
+  color: #ffffff;
+}
+
+/* Optional: Ensure horizontal rules match the color scheme */
+hr {
+  border-color: #8a2be2;
+  opacity: 0.5; /* Adjust opacity as needed */
+}
+
+/* Style for the "Tip of the Table" card */
+.card.mb-3 {
+  border: 2px solid #8a2be2; /* Add a border to make it stand out */
+  border-radius: 10px;       /* Rounded corners */
+  background-color: #f8f9fa; /* Light background */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.card-title {
+  color: #8a2be2; /* Change the title color */
+  font-weight: bold;
+}
+
+.list-group-item {
+  background-color: #2a2a2a;
+  border-color: #8a2be2;
+}
+
+/* Team Member Images */
+.rounded-circle {
+    border-radius: 50%;
+}
+
+/* Social Icons */
+.social-icons a {
+    color: #ffffff;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #8a2be2;
+}
+
+/* Testimonials */
+.card.bg-steel {
+    background-color: #3b4a54;
+    border: none;
+}
+
+.card.bg-steel .card-text {
+    font-size: 1rem;
+    color: #e0e0e0;
+}
+
+/* Custom Icon Size */
+.custom-icon {
+    width: 80px;
+    height: auto;
+}
+/* In main.css */
+.flex-container {
+  display: flex;
+  align-items: center;
+}
+
+
+
+/* Navbar Styles */
+.navbar-custom {
+  background: linear-gradient(135deg, #1e1e1e, #2c2c2c); /* Slightly lighter start */
+    border-bottom: 1px solid #444; /* Subtle border at the bottom */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Slight shadow for depth */
+}
+
+.navbar-custom .navbar-brand {
+    color: #8a2be2; /* Brand Color */
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.navbar-custom .navbar-nav .navbar-brand:hover {
+    color: #472d63; /* Purple hover background */
+}
+
+.navbar-custom .navbar-nav .nav-link {
+    color: #e0e0e0; /* Light text for navbar links */
+    padding: 0.75rem 1rem; /* Adjust padding */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s, color 0.3s;
+    box-shadow: inset 0 -4px 0 rgba(138, 43, 226, 0.8); /* Subtle bottom border highlight */
+}
+
+.navbar-custom .navbar-nav .nav-link:hover {
+    background-color: #472d63; /* Background on hover */
+    color: #ffffff; /* White text on hover */
+}
+
+.navbar-custom .navbar-nav .nav-link.active {
+    background-color: #582a72; /* Active link background */
+    color: #ffffff;
+}
+
+/* Navbar Toggler */
+.navbar-toggler {
+    border-color: #a582c6; /* Toggler border color */
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28168,130,198, 1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* Dropdown Menu in Dark Mode */
+.dropdown-menu {
+    background-color: #2c2c2c; /* Dark background for dropdown */
+    border: none; /* Remove border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+}
+
+.dropdown-item {
+    color: #e0e0e0; /* Light text */
+}
+
+.dropdown-item:hover {
+    background-color: #472d63; /* Darker hover effect */
+    color: #ffffff;
+}
+
+/* Ensure all dropdown item states are covered */
+.dropdown-item:hover, 
+.dropdown-item:focus, 
+.dropdown-item.active, 
+.dropdown-item:focus-visible, 
+.dropdown-item:focus-within {
+    background-color: #582a72 !important; /* Your custom background color */
+    color: #ffffff !important; /* Your custom text color */
+    outline: none !important; /* Remove default blue outline */
+    box-shadow: none !important; /* Remove default focus shadow */
+}
+
+/* Remove blue focus border from any focused links (nav-links) */
+.nav-link:focus, 
+.dropdown-item:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Remove the blue background applied to dropdown links in active or focus states */
+.dropdown-menu .dropdown-item:active,
+.dropdown-menu .dropdown-item:focus {
+    background-color: #582a72 !important;
+    color: #ffffff !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Additional specificity to ensure no default browser focus styling */
+.dropdown-item:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Search Bar */
+.form-control {
+    background-color: #333; /* Dark background */
+    border: 1px solid #444; /* Border color */
+    color: #e0e0e0; /* Light text */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.form-control:focus {
+    background-color: #444; /* Darker on focus */
+    border-color: #a582c6; /* Highlight border */
+}
+
+.btn-outline-success {
+    color: #8a2be2; /* Button text color */
+    border-color: #8a2be2; /* Border color */
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.btn-outline-success:hover {
+    background-color: #7a23d1; /* Hover background */
+    border-color: #7a23d1; /* Hover border */
+    color: #ffffff; /* Hover text */
+}
+
+/* IP Display Styling */
+/* IP Display Styling */
+.ip-display {
+    background: linear-gradient(135deg, #3f3f3f, #4d4d4d); /* Gradient background */
+    color: #ffffff; /* Light text color for label */
+    padding: 8px 15px; /* Increased padding for spacing */
+    border-radius: 8px; /* Rounded corners */
+    margin-right: 15px; /* Space between the IP display and the search bar */
+    display: flex;
+    align-items: center; /* Vertically center the text */
+    font-weight: 600; /* Bold text for the label */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    border: 1px solid #1a1a1a; /* Darker border for contrast */
+    transition: background 0.3s ease, transform 0.3s ease; /* Smooth transition for hover */
+}
+.svg-icon {
+  fill: white;
+  margin-left: 10px;
+  cursor: pointer;
+}
+/* IP Address Styling */
+.ip-address {
+  background-color: #8a2be2;
+  color: #ffffff;
+  padding: 4px 8px;
+  border-radius: 5px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+/* Hover Effect for IP Display */
+.ip-display:hover {
+    background: linear-gradient(135deg, #3f3f3f, #4d4d4d); 
+    transform: translateY(-2px); /* Slight lift effect */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+.blurred {
+    filter: blur(4px);
+    transition: filter 0.3s ease; /* Smooth transition */
+}
+
+svg {
+fill: white; /* Apply white color to the icon */
+vertical-align: middle; /* Align it vertically with surrounding text */
+}
+
+
+
+.small-text, .form-label, .tooltip-text {
+  color: #e6e6e6; /* Slightly lighter for readability */
+}

@@ -1,0 +1,18 @@
+.whois-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+.card-img-top {
+    height: 250px;
+    object-fit: cover;
+}
+
+p {
+    line-height: 1.5;
+}

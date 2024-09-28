@@ -1,0 +1,11 @@
+User-agent: *
+# Allow all pages except the ones specified below
+Allow: /
+
+# Disallow admin and login pages
+Disallow: /edit_blog
+Disallow: /login
+Disallow: /add_blog
+
+# Sitemap URL (if available)
+Sitemap: https://freesectools.com/sitemap.xml

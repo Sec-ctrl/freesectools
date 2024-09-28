@@ -1,0 +1,63 @@
+/* For the image */
+.ip-geo-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 20px; /* Consistent rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+/* For the loading spinner */
+.loading-indicator {
+    display: none; /* Initially hidden */
+    text-align: center;
+}
+
+.spinner-border {
+    color: #8a2be2; /* Use vibrant purple for the loading spinner */
+}
+
+/* Map container */
+.map-container {
+    height: 400px;
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 15px; /* Consistent border radius */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    background-color: #2e2e2e; /* Dark background for the map container */
+}
+
+/* Hide feedback and results by default */
+#feedback {
+    display: none;
+}
+
+#geolocation-result {
+    display: none;
+}
+
+#error-message {
+    display: none;
+}
+
+.alert {
+    background-color: #8a2be2; /* Vibrant purple for alerts */
+    border-color: #8a2be2; /* Border in matching color */
+    color: #ffffff; /* White text for better readability */
+}
+
+.alert-success {
+    background-color: #2a9d8f; /* Custom green for success messages */
+    border-color: #2a9d8f;
+    color: #ffffff;
+}
+
+.alert-danger {
+    background-color: #e63946; /* Custom red for error messages */
+    border-color: #e63946;
+    color: #ffffff;
+}
+
+/* Error message styling */
+.text-danger {
+    color: #e63946;
+}

@@ -1,0 +1,40 @@
+# Byte-compiled Python files
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+venv/
+
+# Environment-specific files
+.env
+*.env
+
+# Database files (if using SQLite or other local dbs)
+*.db
+
+# Logs and backups
+*.log
+*.bak
+*.swp
+
+# IDE/editor-specific files
+.vscode/
+.idea/
+
+# Static files (generated) - you can choose to ignore cache or build directories if applicable
+*.tmp
+*.cache
+
+# Node modules (if using any Node.js dependencies)
+node_modules/
+
+# Ignore fontawesome or bootstrap untracked source files
+app/static/css/fontawesome-free-/
+app/static/css/bootstrap/
+
+# Ignore compiled or package-lock files if using Node.js (optional)
+package-lock.json
+yarn.lock
+
+# Ignore DS_Store (macOS)
+.DS_Store

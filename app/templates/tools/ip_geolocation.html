@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<!-- Page Image -->
+<div class="text-center mb-4">
+    <img src="{{ url_for('static', filename='images/ip_geo.jpg') }}" alt="Whois Lookup Tool Interface" class="img-fluid ip-geo-img">
+</div>
+
+<!-- Page Title and Description -->
+<h1>IP Geolocation Lookup</h1>
+<p>Enter an IP address to find its geolocation information.</p> 
+
+<!-- IP Geolocation Form -->
+<form id="ipGeolocationForm" onsubmit="event.preventDefault(); lookupIPGeolocation();">
+    <!-- Input field for the IP address -->
+    <div class="mb-3">
+        <label for="ip_address" class="form-label">IP Address</label>
+        <input type="text" class="form-control custom-input" id="ip_address" name="ip_address" placeholder="Enter IP address">
+        <div id="ip-error" class="text-danger mt-2" style="display: none;"></div> <!-- Error message -->
+    </div>
+
+    <!-- Lookup Button -->
+    <button type="submit" class="btn btn-primary" id="lookup-ip-button">Lookup IP Geolocation</button>
+</form>
+
+<!-- Display feedback, result, or errors -->
+<div id="feedback" class="mt-4" style="display:none;">
+    <!-- Loading Indicator -->
+    <div id="loading" class="loading-indicator">
+        <div class="spinner-border" role="status"></div>
+        <span>Fetching geolocation data...</span>
+    </div>
+
+    <!-- Geolocation Success Result -->
+    <div id="geolocation-result" class="alert alert-success" style="display:none;">
+        <h4>Geolocation Information:</h4>
+        <ul id="geolocation-info"></ul>
+        <!-- Map container -->
+        <div id="map" class="map-container"></div>
+    </div>
+
+    <!-- Error Message -->
+    <div id="error-message" class="alert alert-danger" style="display:none;"></div>
+</div>
+
+<!-- Include Leaflet.js for map display -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js" nonce="{{ g.csp_nonce }}"></script>
+<!-- Link to the external JavaScript file -->
+<script src="{{ url_for('static', filename='js/modules/ip_geolocation.js') }}" nonce="{{ g.csp_nonce }}"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/ip_geolocation.css') }}">
+
+{% endblock content %}

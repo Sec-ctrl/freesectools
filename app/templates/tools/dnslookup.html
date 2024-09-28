@@ -1,0 +1,213 @@
+{% extends "layout.html" %}
+
+{% block title %}Advanced DNS Lookup Tool with Security Analysis{% endblock %}
+
+{% block meta %}
+<meta name="description" content="An advanced DNS lookup tool providing comprehensive DNS record details, security analysis, and mitigation recommendations.">
+<meta name="keywords" content="DNS lookup, DNSSEC, SSL check, cybersecurity, domain lookup, DNS vulnerability, security analysis">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Advanced DNS Lookup Tool",
+  "description": "Perform advanced DNS lookups with detailed security analysis, DNSSEC validation, SSL checks, and mitigation recommendations.",
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://freesectools.com"
+    },{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "DNS Lookup",
+      "item": "https://freesectools.com/dns-lookup"
+    }]
+  }
+}
+</script>
+{% endblock %}
+{% block content %}
+
+
+<!-- Page Header -->
+<div class="container text-center mb-5">
+    <img src="{{ url_for('static', filename='images/dns-lookup-advanced.png') }}" alt="Advanced DNS Lookup Tool" class="img-fluid rounded" style="max-width: 100%; height: auto;">
+    <h1 class="mt-4">Advanced DNS Lookup Tool with Security Analysis</h1>
+    <p class="lead">Get a comprehensive view of a domain's DNS configuration, including detailed record information, security vulnerabilities, and mitigation recommendations.</p>
+</div>
+
+<!-- DNS Lookup Form -->
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <form id="dnsLookup" class="needs-validation" novalidate>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="domain" name="domain" placeholder="Enter domain (e.g., example.com)" maxlength="100" required>
+                    <button id="dns-search-btn" class="btn btn-primary" type="button">Run DNS Lookup</button>
+                </div>
+                <div class="invalid-feedback">
+                    Please enter a valid domain name.
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Loading Spinner -->
+<div id="loading-spinner" class="text-center mt-5">
+    <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+    <p class="mt-3">Running DNS Lookup...</p>
+</div>
+
+<!-- DNS Lookup Results -->
+<div id="dns-container" class="container mt-5">
+
+    <!-- Summary and Recommendations -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h4 class="mb-0">Summary and Security Recommendations</h4>
+        </div>
+        <div class="card-body">
+            <p id="dns-summary" class="mb-3"></p>
+            <div id="security-recommendations"></div>
+        </div>
+    </div>
+
+    <!-- DNS Lookup Results Accordion -->
+    <div class="accordion" id="dnsAccordion">
+        <!-- A Record -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingA">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseA" aria-expanded="true" aria-controls="collapseA">
+                    A Record
+                </button>
+            </h2>
+            <div id="collapseA" class="accordion-collapse collapse show" aria-labelledby="headingA" data-bs-parent="#dnsAccordion">
+                <div class="accordion-body">
+                    <p>The A record maps your domain to an IPv4 address. It is crucial for directing users to your web server. Ensure that your A record points to the correct IP address to avoid website downtime or hijacking.</p>
+                    <pre id="a-record" class="p-3 rounded bg-dark text-white"></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- AAAA Record -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingAAAA">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAAAA" aria-expanded="false" aria-controls="collapseAAAA">
+                    AAAA Record
+                </button>
+            </h2>
+            <div id="collapseAAAA" class="accordion-collapse collapse" aria-labelledby="headingAAAA" data-bs-parent="#dnsAccordion">
+                <div class="accordion-body">
+                    <p>The AAAA record maps your domain to an IPv6 address. IPv6 is the newer protocol compared to IPv4 and provides a much larger address pool. Having both A and AAAA records ensures that your domain can be accessed using both IPv4 and IPv6.</p>
+                    <pre id="aaaa-record" class="p-3 rounded bg-dark text-white"></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- MX Record -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingMX">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMX" aria-expanded="false" aria-controls="collapseMX">
+                    MX Record
+                </button>
+            </h2>
+            <div id="collapseMX" class="accordion-collapse collapse" aria-labelledby="headingMX" data-bs-parent="#dnsAccordion">
+                <div class="accordion-body">
+                    <p>The MX (Mail Exchange) record specifies the mail servers responsible for receiving email messages on behalf of your domain. It’s important to ensure that your MX records are properly set up to avoid email delivery issues or vulnerabilities like email spoofing.</p>
+                    <pre id="mx-record" class="p-3 rounded bg-dark text-white"></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- NS Record -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingNS">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNS" aria-expanded="false" aria-controls="collapseNS">
+                    NS Record
+                </button>
+            </h2>
+            <div id="collapseNS" class="accordion-collapse collapse" aria-labelledby="headingNS" data-bs-parent="#dnsAccordion">
+                <div class="accordion-body">
+                    <p>The NS (Name Server) records identify the authoritative name servers for your domain. These name servers store and provide access to your domain’s DNS records. Ensure that your NS records point to your correct name servers to avoid unauthorized DNS changes.</p>
+                    <pre id="ns-record" class="p-3 rounded bg-dark text-white"></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- TXT Record -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTXT">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTXT" aria-expanded="false" aria-controls="collapseTXT">
+                    TXT Record
+                </button>
+            </h2>
+            <div id="collapseTXT" class="accordion-collapse collapse" aria-labelledby="headingTXT" data-bs-parent="#dnsAccordion">
+                <div class="accordion-body">
+                    <p>TXT records are used to hold descriptive text. They are often used for domain verification (e.g., SPF, DKIM) and other email security measures to help prevent spoofing and phishing attacks. Ensure your domain has proper TXT records in place to protect your email reputation.</p>
+                    <pre id="txt-record" class="p-3 rounded bg-dark text-white"></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- SSL Certificate Information -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingSSL">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSSL" aria-expanded="false" aria-controls="collapseSSL">
+                    SSL Certificate Information
+                </button>
+            </h2>
+            <div id="collapseSSL" class="accordion-collapse collapse" aria-labelledby="headingSSL" data-bs-parent="#dnsAccordion">
+                <div class="accordion-body">
+                    <p>SSL certificates are critical for encrypting communication between your users and your website. Ensure that your SSL certificate is valid and not expired. A missing or invalid SSL certificate can lead to insecure connections and loss of trust from your users.</p>
+                    <pre id="ssl-cert" class="p-3 rounded bg-dark text-white"></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- DNSSEC Information -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingDNSSEC">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDNSSEC" aria-expanded="false" aria-controls="collapseDNSSEC">
+                    DNSSEC Information
+                </button>
+            </h2>
+            <div id="collapseDNSSEC" class="accordion-collapse collapse" aria-labelledby="headingDNSSEC" data-bs-parent="#dnsAccordion">
+                <div class="accordion-body">
+                    <p>DNSSEC (Domain Name System Security Extensions) adds a layer of security to DNS by ensuring that responses to queries are not tampered with. If DNSSEC is enabled, your domain's DNS responses can be validated for authenticity, protecting against DNS spoofing attacks.</p>
+                    <pre id="dnssec-info" class="p-3 rounded bg-dark text-white"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Error Display -->
+<div id="error-container" class="container mt-5">
+    <div class="alert alert-danger">
+        <h4 class="alert-heading">Error</h4>
+        <p id="error-info"></p>
+    </div>
+</div>
+
+<!-- Blog Post Section -->
+<div class="mt-5">
+    <hr>
+    <h2 class="mb-4">{{ blog_post.title }}</h2>
+    <div class="card mb-4 shadow-sm border-0 rounded-4">
+        <img src="{{ url_for('static', filename='images/' + blog_post.image) }}" class="card-img-top" alt="{{ blog_post.title }}" style="height: 250px; object-fit: cover;">
+        <div class="card-body">
+            <h5 class="card-title">{{ blog_post.title }}</h5>
+            <p class="card-text">{{ blog_post.content | safe }}</p>
+            <p class="text-secondary">By {{ blog_post.author }} | {{ blog_post.date }} | Category: {{ blog_post.category }}</p>
+        </div>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/modules/dnslookup.js') }}" nonce="{{ g.csp_nonce }}"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dnslookup.css') }}">
+{% endblock content %}

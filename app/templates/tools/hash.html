@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+{% block content %}
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Free online file hashing tool. Generate or check MD5, SHA-1, SHA-256, SHA-512, and SHA3-256.">
+    <meta name="keywords" content="hash generator, MD5, SHA-256, SHA-512, SHA3-256, hash checker, file hashing">
+    <title>Free Online File Hashing Tool - Generate and Verify MD5, SHA-256, SHA-512</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Free Online File Hashing Tool",
+      "description": "Generate and check file hashes like MD5, SHA-1, SHA-256, SHA-512, and SHA3-256.",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://freesectools.com"
+        },{
+          "@type": "ListItem",
+          "position": 2,
+          "name": "File Hashing Tool",
+          "item": "https://freesectools.com/hash"
+        }]
+      }
+    }
+    </script>
+</head>
+
+<!-- Page Image -->
+<div class="text-center mb-4">
+    <img src="{{ url_for('static', filename='images/hash.png') }}" alt="File Hashing Tool Interface" class="img-fluid rounded-image">
+</div>
+
+<!-- Page Title and Description -->
+<h1 class="mb-4">Online File Hashing Tool</h1>
+<p class="mb-4">Use our free file hashing tool to generate and verify file hashes using MD5, SHA-1, SHA-256, SHA-512, and SHA3-256. Upload a file and generate the hash, or compare your file's hash value with an expected hash to verify file integrity. This tool is designed for security professionals, developers, and anyone needing to ensure file integrity and security.</p>
+
+<!-- File Hashing Form -->
+<form id="hashLookup" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label for="file" class="form-label">Upload File</label>
+        <input type="file" class="form-control" id="file" name="file">
+    </div>
+
+    <div class="mb-3">
+        <label for="algorithm" class="form-label">Select Algorithm</label>
+        <select class="form-control" id="algorithm" name="algorithm">
+            <option value="md5">MD5</option>
+            <option value="sha1">SHA-1</option>
+            <option value="sha256">SHA-256</option>
+            <option value="sha512">SHA-512</option>
+            <option value="sha3_256">SHA3-256</option>
+        </select>
+    </div>
+
+    <button id="generate-hash-btn" type="button" class="btn btn-primary mb-4">Generate Hash</button>
+</form>
+
+<!-- Loading Spinner -->
+<div id="loading-spinner" style="display: none;">
+    <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+
+<!-- Display the Hash Info -->
+<div id="hash-container" class="card shadow-sm p-4 mb-4" style="display: none;">
+    <h4 class="card-title">Generated Hash and Metadata:</h4>
+    <div class="card-body">
+        <p><strong>File Name:</strong> <span id="file-name"></span></p>
+        <p><strong>File Size:</strong> <span id="file-size"></span> bytes</p>
+        <p><strong>Algorithm:</strong> <span id="hash-algorithm"></span></p>
+        
+        <div class="hash-result">
+            <p><strong>Generated Hash:</strong></p>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="hash-info" readonly>
+                <button id="copy-hash-btn" class="btn btn-outline-secondary" type="button">Copy</button>
+            </div>
+        </div>
+
+        <p><strong>Timestamp:</strong> <span id="timestamp"></span></p>
+    </div>
+</div>
+
+<!-- Link to the external JavaScript file -->
+<script src="{{ url_for('static', filename='js/modules/filehash.js') }}" nonce="{{ g.csp_nonce }}"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/filehash.css') }}">
+{% endblock content %}

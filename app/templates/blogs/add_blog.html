@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+{% block content %}
+<script src="https://cdn.tiny.cloud/1/{{ api_key }}/tinymce/5/tinymce.min.js" referrerpolicy="origin" nonce="{{ g.csp_nonce }}"></script>
+<div class="container mt-4">
+    <h2>Add New Blog Post</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        
+        <div class="form-group">
+            {{ form.title.label(class="form-label") }}
+            {{ form.title(class="form-control") }}
+        </div>
+        
+        <div class="form-group mt-3">
+            {{ form.summary.label(class="form-label") }}
+            {{ form.summary(class="form-control") }}
+        </div>
+        
+        <div class="form-group mt-3">
+            {{ form.content.label(class="form-label") }}
+            <!-- Apply the same ID used for TinyMCE initialization -->
+            {{ form.content(class="form-control", id="content-editor") }}
+        </div>
+        
+        <div class="form-group mt-3">
+            {{ form.category.label(class="form-label") }}
+            {{ form.category(class="form-control") }}
+        </div>
+        
+        <div class="form-group mt-3">
+            {{ form.image.label(class="form-label") }}
+            {{ form.image(class="form-control-file") }}
+        </div>
+        
+        <button type="submit" class="btn btn-primary mt-3">Submit</button>
+    </form>
+</div>
+
+
+<script nonce="{{ g.csp_nonce }}">
+    document.addEventListener('DOMContentLoaded', function() {
+        tinymce.init({
+            selector: '#content-editor',
+            plugins: [
+                'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'image', 'link', 'lists', 'media', 'searchreplace', 
+                'table', 'visualblocks', 'wordcount', 'fullscreen', 'code', 'help', 'advlist', 'autosave', 'spellchecker', 'a11ychecker', 
+                'typography', 'checklist', 'pagebreak', 'preview', 'save'
+            ],
+            toolbar: 'undo redo | hr | blocks fontfamily fontsize | bold italic underline strikethrough | ' +
+                     'link image media table | addcomment showcomments | spellcheckdialog a11ycheck typography | ' +
+                     'align lineheight | checklist numlist bullist indent outdent | emoticons charmap | ' +
+                     'removeformat | fullscreen code preview save',
+            height: 400,
+            content_css: 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css',
+            branding: false,
+            menubar: false,
+            statusbar: false,
+            autosave_ask_before_unload: true,  // Ask before closing if there are unsaved changes
+            autosave_interval: "30s",          // Save drafts every 30 seconds
+            autosave_retention: "2m",          // Keep the saved drafts for 2 minutes
+            image_advtab: true,                // Advanced options in the image dialog
+            quickbars_selection_toolbar: 'bold italic | quicklink h2 h3 blockquote',
+            quickbars_insert_toolbar: 'image media table codesample',
+            contextmenu: 'link image imagetools table spellchecker',
+            content_style: 'body { font-family:Arial,Helvetica,sans-serif; font-size:14px }',
+            a11ychecker_level: 'aaa',          // Accessibility checker set to AAA level
+            setup: function (editor) {
+                editor.on('init', function () {
+                    console.log('TinyMCE initialized');
+                });
+                editor.on('change', function () {
+                    editor.save();  // Automatically save content to the textarea for form submission
+                });
+            }
+        });
+    });
+</script>
+
+{% endblock %}

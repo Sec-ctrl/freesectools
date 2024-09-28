@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container mt-5">
+    <h2>Edit Blog Post</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        
+        <div class="form-group mb-3">
+            {{ form.title.label(class="form-label") }}
+            {{ form.title(class="form-control") }}
+        </div>
+        
+        <div class="form-group mb-3">
+            {{ form.summary.label(class="form-label") }}
+            {{ form.summary(class="form-control") }}
+        </div>
+        
+        <!-- Content Editor -->
+        <div class="form-group mb-3">
+            {{ form.content.label(class="form-label") }}
+            {{ form.content(class="form-control", id="content-editor") }}
+        </div>
+        
+        <div class="form-group mb-3">
+            {{ form.category.label(class="form-label") }}
+            {{ form.category(class="form-control") }}
+        </div>
+        
+        <div class="form-group mb-3">
+            {{ form.image.label(class="form-label") }}
+            {{ form.image(class="form-control-file") }}
+            <small class="form-text text-muted">Leave empty to keep the current image.</small>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Update Blog</button>
+    </form>
+</div>
+
+<script nonce="{{ g.csp_nonce }}">
+    const tinyMceApiKey = "{{ api_key }}";
+    const tinymceScript = document.createElement('script');
+    tinymceScript.src = `https://cdn.tiny.cloud/1/${tinyMceApiKey}/tinymce/5/tinymce.min.js`;
+    tinymceScript.onload = function () {
+        tinymce.init({
+            selector: '#content-editor',
+            plugins: [
+                'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'image', 'link', 'lists', 'media',
+                'searchreplace', 'table', 'visualblocks', 'wordcount', 'fullscreen', 'code', 'help'
+            ],
+            toolbar: 'undo redo | hr | blocks fontfamily fontsize | bold italic underline strikethrough | ' +
+                     'link image media table | code fullscreen',
+            height: 400,
+            branding: false,
+            menubar: false,
+            statusbar: false,
+            content_style: 'body { font-family:Arial,Helvetica,sans-serif; font-size:14px }',
+            setup: function (editor) {
+                editor.on('init', function () {
+                    console.log('TinyMCE initialized');
+                });
+                editor.on('change', function () {
+                    editor.save();  // Automatically save content to the textarea for form submission
+                });
+            }
+        });
+    };
+    document.head.appendChild(tinymceScript);
+</script>
+
+{% endblock %}

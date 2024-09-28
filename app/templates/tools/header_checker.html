@@ -1,0 +1,23 @@
+{% extends "layout.html" %} 
+{% block content %}
+<!-- Page Image -->
+<div class="text-center mb-4">
+    <img src="{{ url_for('static', filename='images/fingerprint.png') }}" alt="Whois Lookup Tool Interface" class="img-fluid">
+</div>
+<div class="container mt-4">
+    <h1>Browser Fingerprinting Risk Analyzer</h1>
+    <p>This tool analyzes your browser's fingerprint to determine how unique it is.</p>
+    
+    <!-- Button to Start Fingerprint Analysis -->
+    <button id="analyze-btn" class="btn btn-primary">Analyze My Browser Fingerprint</button>
+    
+    <!-- Results Section -->
+    <div id="results" class="mt-4">
+        <!-- Results will be populated here -->
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/modules/fingerprint.js') }}" nonce="{{ g.csp_nonce }}"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/fingerprint.css') }}">
+
+{% endblock %}

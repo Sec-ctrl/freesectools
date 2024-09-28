@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container mt-5">
+    <h2>Select a Blog Post to Edit</h2>
+    <table class="table table-striped mt-4">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Summary</th>
+                <th>Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for blog in blog_posts %}
+            <tr>
+                <td>{{ blog['title'] }}</td> <!-- Title -->
+                <td>{{ blog['summary'][:100] }}...</td>
+                <td>{{ blog['date'] }}</td> <!-- Date -->
+                <td>
+                    <a href="{{ url_for('blogs.edit_blog', blog_id=blog['id']) }}" class="btn btn-warning btn-sm">Edit</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

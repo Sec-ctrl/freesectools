@@ -1,0 +1,92 @@
+/* Dark theme for the container and content */
+.container {
+    background-color: #2a2a2a; /* Adjusted dark background color */
+    color: #e0e0e0; /* Light grey text color for better readability */
+    padding: 20px;
+    border-radius: 15px; /* Increased border radius for more rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+/* Button styling for dark theme */
+.btn-primary {
+    background-color: #8a2be2; /* Use vibrant purple for button background */
+    border-color: #8a2be2; /* Matching border color */
+    color: #ffffff; /* White text color for contrast */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #7a23d1; /* Slightly darker shade on hover */
+    border-color: #7a23d1; /* Hover border color */
+}
+
+/* Dark theme for the section */
+#results {
+    background-color: #2e2e2e; /* Slightly lighter dark background for results */
+    padding: 15px;
+    border-radius: 15px; /* Rounded corners for consistency */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    display: none;
+}
+
+/* Badge styling for dark theme */
+.badge {
+    color: #ffffff; /* White text for badges */
+    background-color: #8a2be2; /* Vibrant purple background for badges */
+}
+
+/* Progress bar styling for better visibility on dark background */
+.progress {
+    background-color: #444; /* Dark background for progress */
+    border-radius: 10px; /* Rounded progress bar */
+}
+
+.progress-bar {
+    background-color: #8a2be2; /* Purple for the progress bar */
+}
+
+.bg-danger {
+    background-color: #e63946 !important; /* Custom red for high risk */
+}
+
+.bg-warning {
+    background-color: #ffc107 !important; /* Custom yellow for medium risk */
+}
+
+.bg-success {
+    background-color: #2a9d8f !important; /* Custom green for low risk */
+}
+
+/* Adjust the card's background and text color for dark theme */
+.card {
+    background-color: #2a2a2a; /* Dark background for cards */
+    color: #e0e0e0; /* Light text color */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+/* Scrollable content styling for dark background */
+.scrollable-content {
+    background-color: #333; /* Dark background for scrollable areas */
+    color: #e0e0e0; /* Light text color */
+    padding: 5px;
+    border: 1px solid #555; /* Dark border */
+    border-radius: 10px; /* Rounded corners */
+}
+
+/* Dark theme for hr */
+hr {
+    border-color: #555; /* Adjusted to fit dark theme */
+    opacity: 0.5; /* Adjust opacity for better visibility */
+}
+
+.img-fluid {
+    height: auto;
+    border-radius: 20px; /* Maintain consistent roundness */
+    width: 100%;
+}
+
+/* Progress bar widths */
+.progress-30 { width: 30%; }
+.progress-70 { width: 70%; }
+.progress-100 { width: 100%; }

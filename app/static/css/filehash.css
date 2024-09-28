@@ -1,0 +1,47 @@
+/* Image Styles */
+.rounded-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 20px; /* Consistent rounded corners */
+}
+
+/* Hide the hash container by default */
+#hash-container {
+    display: none; /* Hidden by default */
+}
+
+/* Button styles */
+.btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #8a2be2; /* Brand purple for buttons */
+    border-color: #8a2be2; /* Matching border color */
+    color: #ffffff; /* White text for contrast */
+    border-radius: 5px; /* Rounded corners for consistency */
+    transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth hover transition */
+}
+
+.btn:hover {
+    background-color: #7a23d1; /* Darker purple on hover */
+    border-color: #7a23d1; /* Matching border for hover state */
+}
+
+/* Additional styles for card, text, etc. */
+.card {
+    border-radius: 10px; /* Slightly rounded corners */
+    background-color: #3e3e3e; /* Dark background for cards */
+    color: #f0f0f0; /* Light text for contrast */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+.card-body {
+    padding: 20px; /* Spacious padding */
+    background-color: #2e2e2e; /* Darker background within card */
+    border-radius: 10px; /* Consistent rounded corners */
+    color: #f0f0f0; /* Light text color */
+}
+
+/* Hide the loading spinner by default */
+#loading-spinner {
+    display: none; /* Hidden until needed */
+}

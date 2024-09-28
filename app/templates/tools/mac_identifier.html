@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+{% block content %}
+<!-- Page Image -->
+<div class="text-center mb-4">
+    <img src="{{ url_for('static', filename='images/mac_identifier.jpg') }}" alt="MAC Address Identifier Tool Interface" class="img-fluid mac-img">
+</div>
+
+<h1 class="text-center custom-header">MAC Address Identifier</h1>
+<p class="text-center">Enter a MAC address to find the manufacturer information and additional details.</p>
+
+<form id="macLookupForm" class="text-center">
+    <!-- Input field for the MAC address -->
+    <div class="mb-3">
+        <label for="mac_address" class="form-label">MAC Address</label>
+        <input type="text" class="form-control custom-input mx-auto" id="mac_address" name="mac_address" placeholder="Enter MAC address" maxlength="17" style="max-width: 400px;">
+    </div>
+
+    <!-- Lookup Button -->
+    <button type="button" class="btn custom-btn" id="lookup-button">Lookup MAC Address</button>
+</form>
+
+<!-- Display the lookup result with custom design -->
+<div id="mac-lookup-result" style="display:none;" class="custom-card">
+    <div class="card-body">
+        <h4 class="card-title text-center custom-title">MAC Address Information</h4>
+
+        <!-- Manufacturer Information -->
+        <div class="custom-info-container">
+            <span class="result-icon">🏷️</span>
+            <span class="result-title"></span>
+            <span id="manufacturer-info" class="result-content"></span>
+        </div>
+
+        <!-- Address Type Information -->
+        <div class="custom-info-container">
+            <span class="result-icon">🖧</span>
+            <span class="result-title"></span>
+            <span id="unicast-multicast-info" class="result-content"></span>
+        </div>
+
+        <!-- Administration Type Information -->
+        <div class="custom-info-container">
+            <span class="result-icon">⚙️</span>
+            <span class="result-title"></span>
+            <span id="local-universal-info" class="result-content"></span>
+        </div>
+    </div>
+</div>
+
+<!-- Why Choose Section with Custom Design -->
+<div class="custom-info-section mt-5">
+    <h2 class="text-center">Why Choose Our MAC Address Identifier Tool?</h2>
+    <p>In the ever-connected digital world, knowing what's on your network is crucial. Whether you're a network administrator securing an enterprise network or a home user curious about connected devices, our MAC Address Identifier tool is designed to be your go-to solution.</p>
+    <ul>
+        <li><strong>Instant Results:</strong> Get real-time manufacturer information for any MAC address. Our tool offers fast and accurate lookups, giving you the details you need in seconds.</li>
+        <li><strong>User-Friendly Interface:</strong> With a clean, intuitive design, our MAC Address Identifier is easy to use for everyone, from tech novices to seasoned professionals.</li>
+        <li><strong>Privacy-Focused:</strong> We value your privacy. Our tool performs lookups without storing or sharing your MAC address queries, ensuring your data remains confidential.</li>
+        <li><strong>Up-to-Date Database:</strong> We leverage an extensive and regularly updated database of MAC addresses and their corresponding manufacturers. This ensures you get the most current and reliable information.</li>
+        <li><strong>Multi-Platform Support:</strong> Use our MAC Address Identifier tool on any device—whether it's your smartphone, tablet, or desktop.</li>
+    </ul>
+    <div class="text-center mt-4">
+        <img src="{{ url_for('static', filename='images/mac_tool_features.jpg') }}" alt="MAC Address Tool Features" class="img-fluid mac-tool-features">
+    </div>
+    <p class="text-center italic-text mt-4">"Empower yourself with the knowledge of what's on your network. With our MAC Address Identifier, you have the power to maintain a secure and well-managed network environment."</p>
+</div>
+<!-- Link to the external JavaScript file -->
+<script src="{{ url_for('static', filename='js/modules/mac_identifier.js') }}" nonce="{{ g.csp_nonce }}"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/mac_identifier.css') }}">
+
+
+{% endblock content %}

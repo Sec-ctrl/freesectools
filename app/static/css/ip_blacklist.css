@@ -1,0 +1,25 @@
+#blacklist-result {
+    display: none;
+    max-width: 100%;
+    height: auto;
+    border-radius: 20px; /* Consistent rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+.alert {
+    background-color: #8a2be2; /* Use vibrant purple for alert background */
+    border-color: #8a2be2; /* Border in matching color */
+    color: #ffffff; /* White text for better readability */
+}
+
+.alert-success {
+    background-color: #2a9d8f; /* Custom green for success messages */
+    border-color: #2a9d8f;
+    color: #ffffff;
+}
+
+.alert-danger {
+    background-color: #e63946; /* Custom red for error messages */
+    border-color: #e63946;
+    color: #ffffff;
+}

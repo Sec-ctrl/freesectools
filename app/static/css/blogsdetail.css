@@ -1,0 +1,9 @@
+.card14 {
+    max-height: 400px; object-fit: cover;
+}
+.card-img-top {
+    background-color: transparent; /* Ensure the image has no background */
+    border-radius: 15px; /* Match this to the card border-radius if needed */
+    overflow: hidden; /* Ensure the image fits into the rounded container */
+    
+}

@@ -1,0 +1,150 @@
+body {
+    background-color: #1e1e1e; /* Darker background for consistency */
+    color: #f0f0f0; /* Light text for readability */
+}
+
+/* Accordion button (default state) */
+.accordion-button {
+    background-color: #3a3a3a; /* Neutral dark background */
+    color: #f0f0f0; /* Light text color */
+    border-color: #555; /* Subtle border */
+}
+
+/* Accordion button (hover state) */
+.accordion-button:hover {
+    background-color: #555; /* Slightly lighter on hover */
+    color: #f0f0f0; /* Maintain light text */
+    border-color: #7a23d1; /* Purple border on hover */
+}
+
+/* Accordion button (collapsed state) */
+.accordion-button.collapsed {
+    background-color: #3a3a3a; /* Collapsed state background */
+    color: #f0f0f0; /* Light text */
+    border-color: #555; /* Subtle border */
+}
+
+/* Accordion button (active/open state) */
+.accordion-button:not(.collapsed) {
+    background-color: #7a23d1; /* Purple for active state */
+    color: #f0f0f0; /* Maintain light text */
+    border-color: #8a2be2; /* More vibrant purple */
+    box-shadow: none; /* No box shadow */
+}
+
+.accordion-item {
+    border-color: #8a2be2; /* Purple border to match brand */
+}
+
+/* Accordion body */
+.accordion-body {
+    background-color: #3e3e3e; /* Darker background for body */
+    color: #f0f0f0; /* Light text */
+}
+
+/* Card and form control styles */
+.card {
+    background-color: #3e3e3e; /* Dark card background */
+    color: #f0f0f0; /* Light text for contrast */
+    border: 1px solid #555; /* Subtle border */
+}
+
+/* Primary button styling */
+.btn-primary {
+    background-color: #8a2be2; /* Vibrant purple */
+    border-color: #8a2be2; /* Border matching the background */
+}
+
+.btn-primary:hover {
+    background-color: #7a23d1; /* Darker purple on hover */
+    border-color: #7a23d1; /* Hover border to match background */
+}
+
+/* Alerts styling */
+.alert {
+    background-color: #3e3e3e; /* Dark alert background */
+    color: #f0f0f0; /* Light text for alerts */
+    border-color: #555; /* Subtle border for alerts */
+}
+
+.alert-success {
+    background-color: #28a745; /* Green for success */
+    color: #ffffff; /* White text for contrast */
+}
+
+.alert-danger {
+    background-color: #dc3545; /* Red for danger */
+    color: #ffffff; /* White text for contrast */
+}
+
+.alert-warning {
+    background-color: #ffc107; /* Yellow for warning */
+    color: #212529; /* Dark text for contrast */
+}
+
+/* Preformatted text styling */
+pre {
+    background-color: #2e2e2e; /* Dark background for preformatted text */
+    color: #f0f0f0; /* Light text for readability */
+    border: 1px solid #555; /* Subtle border */
+}
+
+hr {
+    border-color: #555; /* Subtle divider */
+}
+
+/* Link styling */
+a {
+    color: #8a2be2; /* Purple links */
+}
+
+a:hover {
+    color: #7a23d1; /* Darker purple on hover */
+}
+
+/* Invalid feedback */
+.invalid-feedback {
+    color: #ff6b6b; /* Red for error feedback */
+}
+
+/* Ensure all hidden elements are hidden by default */
+#loading-spinner {
+    display: none;
+}
+
+#dns-container {
+    display: none;
+}
+
+#error-container {
+    display: none;
+}
+
+/* Add padding to DNS result sections */
+.pre {
+    padding: 15px;
+}
+
+/* Accordion item styling */
+.accordion-item {
+    margin-bottom: 10px; /* Space between accordion items */
+}
+
+/* Spinner styles */
+.spinner-border {
+    width: 3rem;
+    height: 3rem;
+}
+
+.spinner-border.text-primary {
+    color: #007bff; /* Blue spinner for loading */
+}
+
+/* Form validation feedback */
+.was-validated .form-control:invalid {
+    border-color: #dc3545; /* Red border for invalid fields */
+}
+
+.was-validated .form-control:valid {
+    border-color: #28a745; /* Green border for valid fields */
+}

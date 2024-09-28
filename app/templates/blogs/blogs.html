@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/blogs.css') }}">
+
+<div class="container-fluid mt-5">
+    <!-- Page Header -->
+    <div class="jumbotron text-center bg-dark text-white p-5 rounded-lg shadow-lg mb-5 p-header">
+        <h1 class="display-4">Latest Blogs</h1>
+        <p class="lead">Explore insights on cybersecurity, privacy, and cutting-edge trends.</p>
+    </div>
+
+    <!-- Search and Filter Bar -->
+    <form id="filterForm" method="GET" action="">
+        <div class="row mb-5 justify-content-center align-items-center">
+            <div class="col-md-7 mb-3">
+                <input type="text" name="search" id="searchInput" maxlength="100" class="form-control" placeholder="Search for blogs..." aria-label="Search" value="{{ search_query }}">
+            </div>
+            <div class="col-md-3 mb-3">
+                <select name="category" id="categoryFilter" class="form-control">
+                    <option value="">All Categories</option>
+                    {% for category in categories %}
+                    <option value="{{ category }}" {% if category == selected_category %}selected{% endif %}>{{ category }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-2 text-center">
+                <button type="submit" class="btn btn-primary btn-block">Filter</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Featured Blogs Section -->
+    <h2 class="mb-4 text-center">Featured Blogs</h2>
+    <div class="blog-list">
+        {% for blog in blog_posts %}
+        <div class="card mb-4 shadow-sm">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="{{ url_for('static', filename=blog.image.replace('\\', '/')) }}" class="img-fluid rounded h-100" alt="{{ blog.title }}">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <div>
+                            <h5 class="card-title">
+                                <a href="{{ url_for('blogs.blog_detail', blog_id=blog.id) }}" class="text-decoration-none text-white">{{ blog.title }}</a>
+                            </h5>
+                            <p class="text-secondary small mb-2">By {{ blog.author }} in <span class="badge bg-secondary">{{ blog.category }}</span> on {{ blog.date }}</p>
+                            <p class="card-text card-text-clamp">{{ blog.summary|safe }}</p>
+                        </div>
+                        <div class="text-end">
+                            <br><br>
+                            <a href="{{ url_for('blogs.blog_detail', blog_id=blog.id) }}" class="btn btn-primary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- No Blogs Found Message -->
+    {% if blog_posts|length == 0 %}
+    <p class="text-center mt-5 text-muted">No blogs found matching the criteria.</p>
+    {% endif %}
+</div>
+
+{% endblock %}
