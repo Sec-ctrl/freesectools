@@ -13,7 +13,7 @@ pytest.ini
 .pylintrc
 pyproject.toml
 BEFORECOMMIT.py
-.py*
+.pytest_cache
 
 # Environment-specific files
 .env
