@@ -13,6 +13,7 @@ pytest.ini
 .pylintrc
 pyproject.toml
 BEFORECOMMIT.py
+.py*
 
 # Environment-specific files
 .env
@@ -27,6 +28,7 @@ TODO.MD
 *.bak
 *.swp
 *.log.*
+
 # IDE/editor-specific files
 .vscode/
 .idea/
