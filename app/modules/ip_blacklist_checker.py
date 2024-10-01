@@ -1,6 +1,7 @@
 import socket
 import dns.resolver
 
+
 class IPBlacklistChecker:
     def __init__(self, blacklist_providers=None):
         """
@@ -9,11 +10,11 @@ class IPBlacklistChecker:
         """
         if blacklist_providers is None:
             self.blacklist_providers = [
-                'zen.spamhaus.org',
-                'bl.spamcop.net',
-                'b.barracudacentral.org',
-                'dnsbl.sorbs.net',
-                'list.dsbl.org'
+                "zen.spamhaus.org",
+                "bl.spamcop.net",
+                "b.barracudacentral.org",
+                "dnsbl.sorbs.net",
+                "list.dsbl.org",
             ]
         else:
             self.blacklist_providers = blacklist_providers
@@ -29,14 +30,14 @@ class IPBlacklistChecker:
             for provider in self.blacklist_providers:
                 lookup = f"{reversed_ip}.{provider}"
                 try:
-                    dns.resolver.resolve(lookup, 'A')
-                    result[provider] = 'Blacklisted'
+                    dns.resolver.resolve(lookup, "A")
+                    result[provider] = "Blacklisted"
                 except dns.resolver.NXDOMAIN:
-                    result[provider] = 'Not Listed'
+                    result[provider] = "Not Listed"
                 except dns.resolver.Timeout:
-                    result[provider] = 'Timeout'
+                    result[provider] = "Timeout"
                 except Exception as e:
-                    result[provider] = f'Error: {str(e)}'
+                    result[provider] = f"Error: {str(e)}"
         except ValueError as e:
             return {"Error": f"Invalid IP address: {str(e)}"}
         return result
@@ -50,5 +51,5 @@ class IPBlacklistChecker:
             socket.inet_aton(ip_address)
         except socket.error:
             raise ValueError("Invalid IP address format.")
-        
-        return '.'.join(reversed(ip_address.split('.')))
+
+        return ".".join(reversed(ip_address.split(".")))

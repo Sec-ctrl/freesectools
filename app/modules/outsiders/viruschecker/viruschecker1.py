@@ -4,8 +4,11 @@ import os
 from datetime import datetime
 import time
 
+
 class VirusChecker:
-    def __init__(self, malwarebazaar_api_key, malshare_api_key=None, hash_algorithms=None):
+    def __init__(
+        self, malwarebazaar_api_key, malshare_api_key=None, hash_algorithms=None
+    ):
         """
         Initializes the VirusChecker with API keys for MalwareBazaar and MalShare.
 
@@ -15,10 +18,10 @@ class VirusChecker:
         """
         if not malwarebazaar_api_key:
             raise ValueError("MalwareBazaar API key must be provided")
-        
+
         self.malwarebazaar_api_key = malwarebazaar_api_key
         self.malshare_api_key = malshare_api_key
-        self.hash_algorithms = hash_algorithms or ['sha256']
+        self.hash_algorithms = hash_algorithms or ["sha256"]
         self.cache = {}  # In-memory cache for hash lookups
 
     def _hash_file(self, file_path, algorithm):
@@ -66,9 +69,13 @@ class VirusChecker:
             file_stats = os.stat(file_path)
             return {
                 "file_size": file_stats.st_size,
-                "creation_date": datetime.fromtimestamp(file_stats.st_ctime).isoformat(),
-                "last_modified_date": datetime.fromtimestamp(file_stats.st_mtime).isoformat(),
-                "file_type": self.get_file_type(file_path)
+                "creation_date": datetime.fromtimestamp(
+                    file_stats.st_ctime
+                ).isoformat(),
+                "last_modified_date": datetime.fromtimestamp(
+                    file_stats.st_mtime
+                ).isoformat(),
+                "file_type": self.get_file_type(file_path),
             }
         except Exception as e:
             return {"error": f"Unable to retrieve file metadata: {e}"}
@@ -93,30 +100,25 @@ class VirusChecker:
             return self.cache[file_hash]
 
         url = "https://mb-api.abuse.ch/api/v1/"
-        data = {
-            "query": "get_info",
-            "hash": file_hash
-        }
-        headers = {
-            "API-KEY": self.malwarebazaar_api_key
-        }
+        data = {"query": "get_info", "hash": file_hash}
+        headers = {"API-KEY": self.malwarebazaar_api_key}
 
         try:
             response = requests.post(url, data=data, headers=headers, timeout=10)
             response.raise_for_status()
             result = response.json()
 
-            if result['query_status'] == 'ok':
+            if result["query_status"] == "ok":
                 analysis_result = {
                     "status": "known",
                     "service": "MalwareBazaar",
-                    "malware_family": result['data'][0].get('signature', 'Unknown'),
-                    "first_seen": result['data'][0].get('first_seen', 'Unknown'),
-                    "file_type": result['data'][0].get('file_type', 'Unknown')
+                    "malware_family": result["data"][0].get("signature", "Unknown"),
+                    "first_seen": result["data"][0].get("first_seen", "Unknown"),
+                    "file_type": result["data"][0].get("file_type", "Unknown"),
                 }
                 self.cache[file_hash] = analysis_result
                 return analysis_result
-            elif result['query_status'] == 'hash_not_found':
+            elif result["query_status"] == "hash_not_found":
                 return {"status": "unknown", "service": "MalwareBazaar"}
             else:
                 return {"status": "error", "message": "Unexpected response format"}
@@ -140,27 +142,28 @@ class VirusChecker:
         for attempt in range(retries):
             try:
                 response = requests.get(url, timeout=10)
-                
+
                 # Handle 404 Not Found separately
                 if response.status_code == 404:
                     return {"status": "unknown", "service": "MalShare"}
 
                 response.raise_for_status()
-                result = response.json()  # Assuming the output format is JSON for 'details'
+                result = (
+                    response.json()
+                )  # Assuming the output format is JSON for 'details'
 
                 if result and "ERROR" not in result:
-                    return {
-                        "status": "known",
-                        "service": "MalShare",
-                        "details": result
-                    }
+                    return {"status": "known", "service": "MalShare", "details": result}
                 else:
                     return {"status": "unknown", "service": "MalShare"}
 
             except requests.RequestException as e:
                 if attempt == retries - 1:
-                    return {"status": "error", "message": f"MalShare service is currently unavailable: {e}"}
-                time.sleep(2 ** attempt)  # Exponential backoff
+                    return {
+                        "status": "error",
+                        "message": f"MalShare service is currently unavailable: {e}",
+                    }
+                time.sleep(2**attempt)  # Exponential backoff
 
     def analyze_file(self, file_path):
         """
@@ -174,58 +177,17 @@ class VirusChecker:
 
         # Get file metadata
         metadata = self.get_file_metadata(file_path)
-        analysis_results = {
-            "file_metadata": metadata,
-            "hash_results": {}
-        }
+        analysis_results = {"file_metadata": metadata, "hash_results": {}}
         hashes = self.calculate_hashes(file_path)
-        
+
         for algorithm, file_hash in hashes.items():
             analysis_results["hash_results"][algorithm] = {
                 "MalwareBazaar": self.check_hash_malwarebazaar(file_hash),
-                "MalShare": self.check_hash_malshare(file_hash)
+                "MalShare": self.check_hash_malshare(file_hash),
             }
 
         return analysis_results
 
-# Example usage with detailed reporting
-if __name__ == "__main__":
-    malwarebazaar_api_key = "12c8e30d8b9ab0db9252b1811a2bb730"  # Replace with your MalwareBazaar API key
-    malshare_api_key = "a4a41dc35c4ab4fbf104408387e5bb8a83def7dc7984ade358b255849b5c839b"  # Replace with your MalShare API key
-
-    try:
-        virus_checker = VirusChecker(malwarebazaar_api_key, malshare_api_key, hash_algorithms=['sha256', 'md5'])
-    except ValueError as e:
-        print(f"Initialization error: {e}")
-    else:
-        file_path = "test.dll"  # Replace with your file path
-        result = virus_checker.analyze_file(file_path)
-
-        # Print detailed report
-        if "file_metadata" in result:
-            print("\n=== File Metadata ===")
-            for key, value in result["file_metadata"].items():
-                print(f"{key}: {value}")
-
-        if "hash_results" in result:
-            print("\n=== Hash Analysis Results ===")
-            for algo, services in result["hash_results"].items():
-                print(f"\nHash Type: {algo.upper()}")
-                for service, res in services.items():
-                    print(f"[{service}] Status: {res.get('status')}")
-                    if res.get('status') == 'known':
-                        if 'malware_family' in res:
-                            print(f"  - Malware Family: {res['malware_family']}")
-                        if 'first_seen' in res:
-                            print(f"  - First Seen: {res['first_seen']}")
-                        if 'file_type' in res:
-                            print(f"  - File Type: {res['file_type']}")
-                        if 'details' in res:
-                            print(f"  - Details: {res['details']}")
-                    elif res.get('status') == 'unknown':
-                        print("  - Not found in the database.")
-                    elif res.get('status') == 'error':
-                        print(f"  - Error: {res.get('message', 'No details available')}")
 
 # API KEY malwarebazar 12c8e30d8b9ab0db9252b1811a2bb730
-# API KEY malshare a4a41dc35c4ab4fbf104408387e5bb8a83def7dc7984ade358b255849b5c839b 
+# API KEY malshare a4a41dc35c4ab4fbf104408387e5bb8a83def7dc7984ade358b255849b5c839b

@@ -2,6 +2,7 @@ import requests
 import re
 from typing import Optional
 
+
 class MACAddressLookup:
     def __init__(self, api_url: str = "https://api.macvendors.com/"):
         self.api_url = api_url
@@ -12,10 +13,10 @@ class MACAddressLookup:
         Returns the normalized MAC address in uppercase without separators if valid, else None.
         """
         # Remove common MAC address separators
-        mac_address = re.sub(r'[-:.]', '', mac_address).upper()
+        mac_address = re.sub(r"[-:.]", "", mac_address).upper()
 
         # Validate the MAC address (should be 12 hex digits)
-        if re.match(r'^[0-9A-F]{12}$', mac_address):
+        if re.match(r"^[0-9A-F]{12}$", mac_address):
             return mac_address
         return None
 
@@ -31,7 +32,11 @@ class MACAddressLookup:
 
         return {
             "unicast_multicast": "Multicast" if is_multicast else "Unicast",
-            "local_universal": "Locally Administered" if is_locally_administered else "Universally Administered"
+            "local_universal": (
+                "Locally Administered"
+                if is_locally_administered
+                else "Universally Administered"
+            ),
         }
 
     def lookup(self, mac_address: str) -> dict:
@@ -54,16 +59,10 @@ class MACAddressLookup:
             elif response.status_code == 404:
                 mac_info["manufacturer"] = "Manufacturer not found."
             else:
-                mac_info["error"] = f"Error: Unable to fetch data (Status Code: {response.status_code})"
+                mac_info["error"] = (
+                    f"Error: Unable to fetch data (Status Code: {response.status_code})"
+                )
         except requests.RequestException as e:
             mac_info["error"] = f"Error: {e}"
 
         return mac_info
-
-# Usage example:
-# Create an instance of the lookup class
-mac_lookup = MACAddressLookup()
-
-# Perform a lookup
-result = mac_lookup.lookup('04-D1-3A-41-92-50')
-print(result)  # Output will include additional MAC address information

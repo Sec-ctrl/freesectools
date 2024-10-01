@@ -1,15 +1,18 @@
 import hashlib
 import requests
 
+
 class DataBreachChecker:
-    def __init__(self, hibp_passwords_api_url: str = "https://api.pwnedpasswords.com/range/"):
+    def __init__(
+        self, hibp_passwords_api_url: str = "https://api.pwnedpasswords.com/range/"
+    ):
         self.hibp_passwords_api_url = hibp_passwords_api_url
 
     def _get_sha1_hash(self, password: str) -> str:
         """
         Hash the password using SHA-1.
         """
-        sha1 = hashlib.sha1(password.encode('utf-8')).hexdigest().upper()
+        sha1 = hashlib.sha1(password.encode("utf-8")).hexdigest().upper()
         return sha1
 
     def check_password_breach(self, password: str) -> int:
@@ -26,13 +29,16 @@ class DataBreachChecker:
             response = requests.get(f"{self.hibp_passwords_api_url}{prefix}")
             if response.status_code == 200:
                 # Search for the hash suffix in the response
-                hashes = (line.split(':') for line in response.text.splitlines())
+                hashes = (line.split(":") for line in response.text.splitlines())
                 for hash_suffix, count in hashes:
                     if hash_suffix == suffix:
-                        return int(count)  # Return the count of how many times the password was found
+                        return int(
+                            count
+                        )  # Return the count of how many times the password was found
                 return 0  # Password not found
             else:
-                raise Exception(f"Error: Unable to fetch data (Status Code: {response.status_code})")
+                raise Exception(
+                    f"Error: Unable to fetch data (Status Code: {response.status_code})"
+                )
         except requests.RequestException as e:
             raise Exception(f"Error: {e}")
-

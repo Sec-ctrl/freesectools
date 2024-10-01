@@ -1,6 +1,7 @@
 import whois
 from datetime import datetime
 
+
 class WhoisLookup:
     def __init__(self, domain):
         self.domain = domain
@@ -30,12 +31,12 @@ class WhoisLookup:
             "Name Servers": self._format_list(self.data.name_servers),
             "Status": self._clean_status(self.data.status),
             "Emails": self._format_list(self.data.emails),
-            "Registrant": self.data.registrant
+            "Registrant": self.data.registrant,
         }
 
     def _format_list(self, value_list):
         if isinstance(value_list, list):
-            return ', '.join(value_list)
+            return ", ".join(value_list)
         return value_list
 
     def _format_single_value(self, value):
@@ -45,7 +46,7 @@ class WhoisLookup:
 
     def _format_date(self, date):
         if isinstance(date, list):
-            return ', '.join([self._format_single_date(d) for d in date])
+            return ", ".join([self._format_single_date(d) for d in date])
         return self._format_single_date(date)
 
     def _format_single_date(self, date):
@@ -57,6 +58,8 @@ class WhoisLookup:
         if isinstance(status_list, list):
             cleaned_status = set()  # Use a set to avoid duplicates
             for status in status_list:
-                cleaned_status.add(status.split()[0])  # Take only the first part (before the URL)
-            return ', '.join(cleaned_status)
+                cleaned_status.add(
+                    status.split()[0]
+                )  # Take only the first part (before the URL)
+            return ", ".join(cleaned_status)
         return status_list
