@@ -21,5 +21,13 @@
   "tests/test_routes/test_hashtool.py::test_hash_file_invalid_algorithm": true,
   "tests/test_routes/test_hashtool.py::test_hash_file_no_file_uploaded": true,
   "tests/test_routes/test_hashtool.py::test_hash_file_too_large": true,
-  "tests/test_routes/test_hashtool.py::test_rate_limit": true
+  "tests/test_routes/test_hashtool.py::test_rate_limit": true,
+  "tests/test_tools/test_headers.py::test_security_headers_homepage": true,
+  "tests/test_tools/test_headers.py::test_security_headers_blogs_new": true,
+  "tests/test_tools/test_headers.py::test_security_headers_passwordgen": true,
+  "tests/test_tools/test_headers.py::test_security_headers_whois": true,
+  "tests/test_tools/test_headers.py::test_security_headers_ip_geolocation": true,
+  "tests/test_tools/test_headers.py::test_security_headers_ip_blacklist": true,
+  "tests/test_tools/test_headers.py::test_security_headers_fingerprint": true,
+  "tests/test_tools/test_headers.py::test_security_headers_dns_lookup": true
 }
